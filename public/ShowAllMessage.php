@@ -1,5 +1,6 @@
 <?php
 include_once "../vendor/autoload.php";
+
 use App\Repositories\MessageRepository;
 ?>
 <!DOCTYPE html>
@@ -18,11 +19,18 @@ use App\Repositories\MessageRepository;
 </head>
 
 <body>
+    <?php
+    session_start();
+    session_destroy();
+    ?>
     <div class="container">
         <nav class="navbar navbar-expand-xl bg-dark">
             <ul class="navbar-nav ">
                 <li class="nav-item">
                     <a class="nav-link font-size" href="./AddMessage.php">新增留言</a>
+                </li>
+                <li class="nav-item text-right">
+                    <a class="nav-link font-size" href="../../login/public/SingnIn.php">登入</a>
                 </li>
             </ul>
         </nav>
@@ -46,10 +54,10 @@ use App\Repositories\MessageRepository;
                             <h3>Name: <?php echo $message['name'] ?></h3>
                             <h3>Content: <?php echo $message['content'] ?></h3>
                         </div>
-                        <a href="../src/Controllers/Message/delete.php?id=<?php echo $message['ID']?>" class="btn btn-primary button-format">
+                        <a href="../src/Controllers/Message/delete.php?id=<?php echo $message['ID'] ?>" class="btn btn-primary button-format">
                             <button> 刪除 </button>
                         </a>
-                        <a href="UpDataFrom.php?id=<?php echo $message['ID']?>" class="btn btn-primary button-format">
+                        <a href="UpDataFrom.php?id=<?php echo $message['ID'] ?>" class="btn btn-primary button-format">
                             <button> 修改 </button>
                         </a>
                     </div>

@@ -5,6 +5,21 @@ use App\Repositories\MessageRepository;
 use App\Helper\Redirect;
 
 $messageRepository = new MessageRepository();
-$messageRepository->create($_POST['title'], $_POST['name'], $_POST['content']);
+$chech = $accountRepository->createCheck($_POST['receiver']);
 
-new Redirect("../../../public/ShowAllMessage.php");
+if ($chech) {
+    echo "<script>alert('寄送成功')</script>";
+
+    $messageRepository->create($_POST['receiver'], $_POST['title'], $_POST['content'], $_POST['name']);
+
+    $redirect = new Redirect();
+    $redirect->refresh("../../../public/showmessage.php");
+}
+
+if (!$chech) {
+    echo "<script>alert('此用戶不存在')</script>";
+
+    $redirect = new Redirect();
+    $redirect->refresh("../../../public/SingnIn.php");
+}
+

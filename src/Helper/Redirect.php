@@ -4,8 +4,14 @@ namespace App\Helper;
 
 class Redirect
 {
-    function __construct(string $url)
+
+    function refresh(string $url)
     {
-        header("Location:".$url);
+        header("refresh:0.1; url=" . $url);
+    }
+
+    function location(string $url)
+    {
+        header("Location:" . $url);
     }
 }

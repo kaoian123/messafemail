@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php session_start(); ?>
 
 <head>
     <meta charset="UTF-8">
@@ -14,38 +15,32 @@
 
 <body>
     <div class="container">
-        <nav class="navbar navbar-expand-xl bg-dark">
-            <ul class="navbar-nav ">
-                <li class="nav-item">
-                    <a class="nav-link font-size" href="./ShowAllMessage.php">留言列表</a>
-                </li>
-            </ul>
-        </nav>
         <div class="container">
             <div class="row">
                 <div class="col-md">
                     <div>
-                        <h1 class="message-board text-primary">新增留言</h1>
+                        <h1 class="message-board text-primary">寄信</h1>
                     </div>
                     <form action='../src/Controllers/Message/create.php' method='post'>
                         <div class="input-group mt-4 ">
                             <div class="input-group-prepend">
-                                <span class="input-group-text font-size bg-dark text-light">title:</span>
+                                <span class="input-group-text font-size bg-dark text-light">收件者:</span>
                             </div>
-                            <input class="font-size form-control" placeholder="type your title" id="title" name="title" required>
+                            <input class="font-size form-control" id="receiver" name="receiver" required>
+                        </div>
+                        <div class="input-group mt-4 ">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text font-size bg-dark text-light">主旨:</span>
+                            </div>
+                            <input class="font-size form-control" id="title" name="title" required>
                         </div>
                         <div class="input-group mt-4">
                             <div class="input-group-prepend">
-                                <span class="input-group-text font-size bg-dark text-light ">name:</span>
+                                <span class="input-group-text font-size bg-dark text-light">內容:</span>
                             </div>
-                            <input class="font-size form-control" placeholder="type your name" id="user-name" name="name">
+                            <textarea class="font-size form-control" id="textarea" name="content"></textarea>
                         </div>
-                        <div class="input-group mt-4">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text font-size bg-dark text-light">content:</span>
-                            </div>
-                            <textarea class="font-size form-control" id="textarea" placeholder="type your content" name="content"></textarea>
-                        </div>
+                        <input type="hidden" name="name" value=" <?php echo $_SESSION['UserAccount'] ?>">
                         <button type="submit" class="font-size float-right btn btn-info">送出</button>
                     </form>
                 </div>

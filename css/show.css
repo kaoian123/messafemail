@@ -1,0 +1,35 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    background-color: #fff;
+    color: #202124;
+}
+
+.h {
+    height: inherit;
+}
+
+.a {
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: rgb(4, 170, 109);
+    color: #fff !important;
+    float: right !important;
+    text-align: center;
+    text-decoration: none !important;
+}
+
+.btn-size {
+    margin: 20px;
+    width: 100px;
+    height: 50px;
+}
+
+.add {
+    color: #fff !important;
+    text-align: center;
+    text-decoration: none !important;
+}

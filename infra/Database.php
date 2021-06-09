@@ -9,6 +9,6 @@ class Database extends Account
 {
     function getPDO()
     {
-        return new PDO("mysql:dbname=dbmessage;host=localhost", $this->account, $this->password);
+        return new PDO("mysql:dbname=dbmessageboard;host=localhost", $this->account, $this->password);
     }
 }
