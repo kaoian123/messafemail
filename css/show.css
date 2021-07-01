@@ -33,3 +33,7 @@ html, body {
     text-align: center;
     text-decoration: none !important;
 }
+
+.table-row {
+    cursor: pointer;
+}

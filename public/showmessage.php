@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="en">
-<?php session_start(); ?>
+<?php
+include_once "../vendor/autoload.php";
+
+use App\Repositories\MessageRepository;
+
+session_start();
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -12,6 +18,7 @@
     <script src="/Bootstrap4/jquery-3.5.1.min.js"></script>
     <script src="/Bootstrap4/popper.min.js"></script>
     <script src="/Bootstrap4/bootstrap.min.js"></script>
+    <script src="../JS/show.js"></script>
 
 <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
@@ -33,9 +40,11 @@
             <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                 <?php if (isset($_SESSION['UserAccount'])) { ?>
                     <div>
-                        <button class="btn btn-info btn-size">
-                            <a href="./AddMessage.php" class="add">撰寫</a>
-                        </button>
+                        <a href="./AddMessage.php" class="add">
+                            <button class="btn btn-info btn-size">
+                                撰寫
+                            </button>
+                        </a>
                     </div>
                 <?php } ?>
                 <div class="sidebar-sticky">
@@ -59,8 +68,18 @@
                 </div>
             </nav>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                </div>
+                <?php
+
+                $messageRepository = new MessageRepository();
+                $message = $messageRepository->getMessage($_GET['id']);
+                ?>
+                    <div class="alert alert-warning alert-format">
+                        <div class="alert alert-dark">
+                            <h3>標題:<?php echo $message['Title'] ?></h3>
+                            <h3>內容: <?php echo $message['content'] ?></h3>
+                            <h3>寄件人: <?php echo $message['name'] ?></h3>
+                        </div>
+                    </div>
             </main>
         </div>
     </div>
